@@ -91,6 +91,10 @@
         font-size: 20px;
     }
 
+    button[class="btn btn-outline-info"]:active {
+        transform: scale(0.95);
+    }
+
     button[class="btn btn-outline-info"] {
         color: var(--tg-theme-button-text-color);
         background: var(--tg-theme-button-color);
@@ -101,31 +105,31 @@
         color: var(--tg-theme-button-text-color);
     }
 
+    button[class="nav-link"]:hover {
+        color: var(--tg-theme-button-text-color);
+    }
+
     button[class="btn btn-outline-info"]:hover {
         border-color: 2px solid #ffffff;
     }
 
     .cart-thumps {
-        width: 80px;
+        width: 100px;
     }
 
 </style>
 
 <body>
     <div class="container">
-        
-    <!-- <h1 class="animate__animated animate__fadeInDown">Tele Café</h1> -->
         <nav>
-            <!-- <div class="nav nav-link" id="checkout-nav">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-checkout" type="button" role="tab" id="checkout"><i class="fa-solid fa-cart-shopping"></i>
-                    <span class="badge rounded-pill bg-danger cart-sum"> 0000000</span>
-                </button>
-            </div> -->
             <div class="nav nav-tabs animate__animated animate__fadeInDown" id="nav-tab" role="tablist">
                 <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#nav-burgers" type="button" role="tab"><i class="fa-solid fa-burger"></i>Burgers</button>
                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-pizza" type="button" role="tab"><i class="fa-solid fa-pizza-slice"></i>Pizza</button>
                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-deserts" type="button" role="tab"><i class="fa-solid fa-cake"></i>Deserts</button>
                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-beverages" type="button" role="tab"><i class="fa-solid fa-cocktail"></i>Beverages</button>
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-checkout" type="button" role="tab" id="checkout"><i class="fa-solid fa-cart-shopping"></i>
+                    <span class="badge rounded-pill bg-danger cart-sum"> 0000000</span>
+                </button>
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
@@ -161,21 +165,21 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="tab-pane fade show" id="nav-checkout" role="tabpanel">
+            <div class="tab-pane fade show" id="nav-checkout" role="tabpanel">
                 <h2 class="animate__animated animate__fadeInUp text-center tab-title">Cart list
-                    <span class="btn btn-danger bg-danger checkout-clear"><i class="fa-solid fa-trash-arrow-up"></i></span>
+                    <span class="btn btn-danger bg-danger checkout-clear">
+                        <i class="fa-solid fa-trash-can"></i></span>
                 </h2>
-            </div> -->
+                <div class="row">
+                    <div class="col-12 product animate__animated animate__fadeInUp">
+                        <ul class="list-group cart-list">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">Products not found!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-    <!-- <script>
-        checkout.addEventListener("click", () => {
-            document.getElementById("nav-tab").style.display = "none";
-            document.getElementById("nav-burgers").style.display = "none";
-            document.getElementById("checkout-nav").style.display = "block";
-        });
-    </script> -->
 
     <script>
         const telegram = window.Telegram.WebApp
@@ -201,6 +205,26 @@
             "name": "Burger 2",
             "img": "burger.png",
             "price": 200
+        }, {
+            "name": "Burger 3",
+            "img": "burger.png",
+            "price": 300
+        }, {
+            "name": "Burger 3",
+            "img": "burger.png",
+            "price": 300
+        }, {
+            "name": "Burger 3",
+            "img": "burger.png",
+            "price": 300
+        }, {
+            "name": "Burger 3",
+            "img": "burger.png",
+            "price": 300
+        }, {
+            "name": "Burger 3",
+            "img": "burger.png",
+            "price": 300
         }, {
             "name": "Burger 3",
             "img": "burger.png",
@@ -247,15 +271,13 @@
             "name": "Beverage 3",
             "img": "coke.png",
             "price": 300
-        }];
+        }];  
 
-        
         document.addEventListener("DOMContentLoaded", () => {
             const productList_Burgers = document.querySelector("div.product-list-burgers")
 
             productList_Burgers.innerHTML = ""
             // console.log(arrayShufle(foodBase));
-
             arrayShufle(foodBase_Burger).forEach(el => {
                 productList_Burgers.innerHTML += `
                 <div class="col-4 product animate__animated animate__fadeInUpBig">
@@ -273,31 +295,6 @@
                 </div>`;
             })
 
-            const products =document.querySelectorAll(".product")
-            let i = 0
-            let printer = setInterval(() => {
-               let el = products[i]
-               i < products.length ? el.style.display = "block" : clearInterval(printer)
-               i++ 
-            }, 200)
-            // cart()
-            // const store = document.querySelectorAll(".btn-outline-info")
-            // store.forEach(element => {
-            //     element.addEventListener("click", () => {
-            //         switch (element.dataset.rol) {
-            //             case "buy":
-            //                 cart({
-            //                     'add': JSON.parse(element.parentElement.dataset.product)
-            //                 })
-            //                 break
-            //             default:
-            //                 break
-            //         }
-            //     })
-            // })
-        })
-
-        document.addEventListener("DOMContentLoaded", () => {
             const productList_Pizza = document.querySelector("div.product-list-pizza")
 
             productList_Pizza.innerHTML = ""
@@ -320,31 +317,6 @@
                 </div>`;
             })
 
-            const products =document.querySelectorAll(".product")
-            let i = 0
-            let printer = setInterval(() => {
-               let el = products[i]
-               i < products.length ? el.style.display = "block" : clearInterval(printer)
-               i++ 
-            }, 200)
-            // cart()
-            // const store = document.querySelectorAll(".btn-outline-info")
-            // store.forEach(element => {
-            //     element.addEventListener("click", () => {
-            //         switch (element.dataset.rol) {
-            //             case "buy":
-            //                 cart({
-            //                     'add': JSON.parse(element.parentElement.dataset.product)
-            //                 })
-            //                 break
-            //             default:
-            //                 break
-            //         }
-            //     })
-            // })
-        })
-
-        document.addEventListener("DOMContentLoaded", () => {
             const productList_Deserts = document.querySelector("div.product-list-deserts")
 
             productList_Deserts.innerHTML = ""
@@ -367,31 +339,6 @@
                 </div>`;
             })
 
-            const products =document.querySelectorAll(".product")
-            let i = 0
-            let printer = setInterval(() => {
-               let el = products[i]
-               i < products.length ? el.style.display = "block" : clearInterval(printer)
-               i++ 
-            }, 200)
-            // cart()
-            // const store = document.querySelectorAll(".btn-outline-info")
-            // store.forEach(element => {
-            //     element.addEventListener("click", () => {
-            //         switch (element.dataset.rol) {
-            //             case "buy":
-            //                 cart({
-            //                     'add': JSON.parse(element.parentElement.dataset.product)
-            //                 })
-            //                 break
-            //             default:
-            //                 break
-            //         }
-            //     })
-            // })
-        })
-
-        document.addEventListener("DOMContentLoaded", () => {
             const productList_Beverages = document.querySelector("div.product-list-beverages")
 
             productList_Beverages.innerHTML = ""
@@ -414,28 +361,113 @@
                 </div>`;
             })
 
-            const products =document.querySelectorAll(".product")
+            const products = document.querySelectorAll(".product")
             let i = 0
             let printer = setInterval(() => {
                let el = products[i]
                i < products.length ? el.style.display = "block" : clearInterval(printer)
                i++ 
             }, 200)
-            // cart()
-            // const store = document.querySelectorAll(".btn-outline-info")
-            // store.forEach(element => {
-            //     element.addEventListener("click", () => {
-            //         switch (element.dataset.rol) {
-            //             case "buy":
-            //                 cart({
-            //                     'add': JSON.parse(element.parentElement.dataset.product)
-            //                 })
-            //                 break
-            //             default:
-            //                 break
-            //         }
-            //     })
-            // })
+
+            cart()
+            const store = document.querySelectorAll(".btn-outline-info")
+            store.forEach(el => {
+                el.addEventListener("click", () => {
+                    // console.log(JSON.parse(el.parentElement.dataset.product));
+                    switch (el.dataset.rol) {
+                        case "buy":
+                            cart({
+                                'add': JSON.parse(el.parentElement.dataset.product)
+                            })
+                            break
+                        default:
+                            break
+                    }
+                })
+            })
+
+            document.querySelector(".checkout-clear").addEventListener("click", () => {
+                cart({
+                    'clear': true
+                })
+            })
+        })
+
+        function cart(params = []) {
+            let cart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : {}
+            if (params['add']) {
+                cart[params['add']['name']] = params['add']
+                localStorage.setItem("cart", JSON.stringify(cart));
+            } else if (params['remove']) {
+                delete cart[params['remove']]
+                localStorage.setItem("cart", JSON.stringify(cart));
+            } else if (params['clear']) {
+                cart = {};
+                localStorage.setItem("cart", "{}");
+            }
+            let totalSum = 0
+            const cartList = document.querySelector(".cart-list")
+            Object.values(cart).forEach((product, index) => {
+                if (index == 0) cartList.innerHTML = ""
+                totalSum += product.price
+                cartList.innerHTML += `
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2">
+                            <img src="${product.img}" alt="text" class="cart-thumps">
+                        </div>
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">Name: ${product.name}</div>
+                            <span class="small">${product.price} RUB</span>
+                        </div>
+                        <span class="badge bg-danger rounded-pill" onclick="cart({'remove': '${product.name}'})">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </span>
+                    </li>`
+            })
+            document.querySelector(".cart-sum").innerText = `${totalSum.toFixed(2)} RUB`
+            if (Object.keys(cart).length < 1) {
+                cartList.innerHTML = 
+                    `<li class="list-group-item d-flex justify-content-between align-items-start">Products not found!</li>`
+                mainButton.hide();
+            } else {
+                mainButton.show();
+                mainButton.setParams({
+                    'text': 'Pay ' + (totalSum).toFixed(2) + 'RUB',
+                    'color': "#2ECC71"
+                })
+            }
+            return cart
+        }
+
+        mainButton.onClick(() => {
+            mainButton.showProgress();
+        let orderList = []
+        Object.values(cart()).forEach(product => {
+            orderList.push({
+                'label': product.name,
+                'amount': (product.price).toFixed(0)
+                })
+            })
+        })
+        console.log(orderList);
+        document.querySelector('#logbox').innerText = JSON.stringify(orderList, null, 4)
+        const BotToken = '6634636778:AAHkrQJkGZnOzgFaUczSqY3_aQI8xJ2PntU'
+        let method = "sendInvoice"
+        axios.post(`https://api.telegram.org/bot${BotToken}/${method}`, {
+            'chat_id': telegramData.user.id,
+            'title': 'cafe billing system',
+            'description': 'the order is buying food',
+            'payload': "order_id=G3645",
+            'provider_token': '284685063:TEST:YmM5ODVhNzBhZGFk',
+            'currency': 'RUB', 
+            'max_tip_amount': 1000*100,
+            'prices': orderList,
+            'suggested_tip_amounts': [1*100, 5*100, 50*100, 100*100],
+            'need_name': true,
+            'need_phone_number': true,
+            'need_email': true,
+            'need_shipping_address': true,
+            'is_flexible': true,
         })
 
     </script>
