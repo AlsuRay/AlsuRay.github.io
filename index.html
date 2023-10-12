@@ -11,141 +11,423 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
+
 <style>
 
-    body {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 200;
-        color: var(--tg-theme-text-color);
-        background: var(--tg-theme-bg-color);
-    }
-
-    .filter-wrapper {
-        display: flex;
-        justify-content: space-evenly;
-        overflow-x: hidden;
-        width: 100%;
-        height: 70px;
-        gap: 1.2rem;
-    }
-
-    .filter-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        min-width: 70px;
-        height: 100%;
-        border-radius: 8px;
-        border: 1px solid #ffffff;
-        font-size: 14px;
-        cursor: pointer;
-        padding-top: 4%;
-    }
-
-    p, h1 {
-        color: #ffffff;
-    }
-
-    h1 {
-        font-family: Papyrus, fantasy; 
-        font-size: 24px; 
-        font-style: normal; 
-        font-variant: normal; 
-        font-weight: 700; 
-        line-height: 26.4px;
-        padding-top: 5%;
-        padding-bottom: 5%;
-        text-align: center;
-    }
-
-    .filter-icon {
-        width: 80%;
-        height: 60%;
-        font-size: 25px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 8px;
-        padding-bottom: 3%;
-        color: rgb(255, 255, 255)
-    }
-
-    .filter-card:hover {
-        border: 3px solid #00e1ff;
-    }
-
-    .filter-card:hover .filter-icon {
-        color: #00e1ff;
-    }
-
-    .filter-card:hover p {
-        color: #00e1ff;
-    }
-
-    .detail-wrapper {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        width: 100%;
-        margin-top: 1rem;
-        gap: 2%;
-        border-radius: 8px; 
-    }
-
-    .detail-card {
-        min-height: 280px;
-        height: 100%;
-        border-radius: 8px;
-        margin: 1% 0;
-        box-shadow: rgba(176, 176, 176, 0.2) 0px 2px 8px 0px;
-        cursor: pointer;
-    }
-
-    .detail-img {
-        width: 100%;
-        height: 180px;
-        border-radius: 8px;
-        object-fit: cover;
-        object-position: center;
-        filter: brightness(0.8);
-
+    .container {
+        padding: 0;
+        color: #111;
+        /* background: #444; */
     }
 
     .tab-title {
         padding: 20px;
     }
 
+    .col-4.product>img {
+        width: max-content;
+        display: block;
+        margin: 0 auto 10px;
+        max-width: inherit;
+    }
 
+    .col-4.product {
+        text-align: center;
+        margin-bottom: 20px;
+        display: none;
+    }
+
+    span.price-badge {
+        position: absolute;
+        bottom: 4px;
+        right: 0;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        font-size: 20px;
+    }
+
+    span.count-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-weight: bold;
+        text-align: center;
+        border: 2px;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    span.badge.rounded-pill.bg-danger.cart-sum,
+    .checkout-sum {
+        font-size: xx-small;
+    }
+
+    .tab-panel>h2 {
+        margin: 20px auto 30px;
+    }
+
+    div#staticBackdrop {
+        background: #000000cf;
+        transition-duration: 1s;
+    }
+
+    div[role="tabpanel"] {
+        padding: 0 10px;
+    }
+
+    button[class="btn btn-outline-info"] {
+        background-color: #39bdff;
+        width: 80px;
+        color: #ffffff;
+        border-color: #ffffff;
+    }
+
+    button[class="btn btn-outline-info"]:hover {
+        background-color: #42b2db;
+        width: 80px;
+        color: #cbcbcb;
+        border-color: #ffffff;
+    }
+
+    .cart-thumps {
+        width: 80px;
+    }
 </style>
 
 <body>
-    <h1>Tele Café</h1>
-        <div class="filter-wrapper">
-            <div class="filter-card">
-                <div class="filter-icon">
-                    <i class="fa-solid fa-burger"></i>
-                </div>
-                <p>Burgers</p>
+    <div class="container">
+        
+    <!-- <h1 class="animate__animated animate__fadeInDown">Tele Café</h1> -->
+        <nav>
+            <!-- <div class="nav nav-link" id="checkout-nav">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-checkout" type="button" role="tab" id="checkout"><i class="fa-solid fa-cart-shopping"></i>
+                    <span class="badge rounded-pill bg-danger cart-sum"> 0000000</span>
+                </button>
+            </div> -->
+            <div class="nav nav-tabs animate__animated animate__fadeInDown" id="nav-tab" role="tablist">
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#nav-burgers" type="button" role="tab"><i class="fa-solid fa-burger"></i>Burgers</button>
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-pizza" type="button" role="tab"><i class="fa-solid fa-pizza-slice"></i>Pizza</button>
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-deserts" type="button" role="tab"><i class="fa-solid fa-cake"></i>Deserts</button>
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-beverages" type="button" role="tab"><i class="fa-solid fa-cocktail"></i>Beverages</button>
             </div>
-            <div class="filter-card">
-                <div class="filter-icon">
-                    <i class="fa-solid fa-pizza-slice"></i>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-burgers" role="tabpanel">
+                <h2 class="animate__animated animate__fadeInUp text-center tab-title">Burgers</h2>
+                <div class="row product-list-burgers">
+                    <div class="col-12 product animate__animated animate__fadeInUp">
+                        Products not found!
+                    </div>
                 </div>
-                <p>Pizza</p>
             </div>
-            <div class="filter-card">
-                <div class="filter-icon">
-                    <i class="fa-solid fa-ice-cream"></i>
+            <div class="tab-pane fade show" id="nav-pizza" role="tabpanel">
+                <h2 class="animate__animated animate__fadeInUp text-center tab-title">Pizza</h2>
+                <div class="row product-list-pizza">
+                    <div class="col-12 product animate__animated animate__fadeInUp">
+                        Products not found!
+                    </div>
                 </div>
-                <p>Deserts</p>
             </div>
-            <div class="filter-card">
-                <div class="filter-icon">
-                    <i class="fa-solid fa-glass-water"></i>
+            <div class="tab-pane fade show" id="nav-deserts" role="tabpanel">
+                <h2 class="animate__animated animate__fadeInUp text-center tab-title">Deserts</h2>
+                <div class="row product-list-deserts">
+                    <div class="col-12 product animate__animated animate__fadeInUp">
+                        Products not found!
+                    </div>
                 </div>
-                <p>Beverages</p>
             </div>
+            <div class="tab-pane fade show" id="nav-beverages" role="tabpanel">
+                <h2 class="animate__animated animate__fadeInUp text-center tab-title">Beverages</h2>
+                <div class="row product-list-beverages">
+                    <div class="col-12 product animate__animated animate__fadeInUp">
+                        Products not found!
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="tab-pane fade show" id="nav-checkout" role="tabpanel">
+                <h2 class="animate__animated animate__fadeInUp text-center tab-title">Cart list
+                    <span class="btn btn-danger bg-danger checkout-clear"><i class="fa-solid fa-trash-arrow-up"></i></span>
+                </h2>
+            </div> -->
         </div>
+    </div>
+
+    <!-- <script>
+        checkout.addEventListener("click", () => {
+            document.getElementById("nav-tab").style.display = "none";
+            document.getElementById("nav-burgers").style.display = "none";
+            document.getElementById("checkout-nav").style.display = "block";
+        });
+    </script> -->
+
+    <script>
+        const telegram = window.Telegram.WebApp
+        const telegramData = telegram.initDataUnsafe
+        const themeParams = telegram.themeParams
+        const mainButton = telegram.MainButton 
+        telegram.expand()    
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v6.1.1/js/all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        function arrayShufle(array) {
+            return array.sort((a,b) => 0.5 - Math.random())
+        }
+        let foodBase_Burger =[{
+            "name": "Burger 1",
+            "img": "burger.png",
+            "price": 100
+        }, {
+            "name": "Burger 2",
+            "img": "burger.png",
+            "price": 200
+        }, {
+            "name": "Burger 3",
+            "img": "burger.png",
+            "price": 300
+        }];
+
+        let foodBase_Pizza =[{
+            "name": "Pizza 1",
+            "img": "pizza.png",
+            "price": 100
+        }, {
+            "name": "Pizza 2",
+            "img": "pizza.png",
+            "price": 200
+        }, {
+            "name": "Pizza 3",
+            "img": "pizza.png",
+            "price": 300
+        }];
+
+        let foodBase_Deserts =[{
+            "name": "Desert 1",
+            "img": "cake.png",
+            "price": 100
+        }, {
+            "name": "Desert 2",
+            "img": "cake.png",
+            "price": 200
+        }, {
+            "name": "Desert 3",
+            "img": "cake.png",
+            "price": 300
+        }];
+
+        let foodBase_Beverages =[{
+            "name": "Beverage 1",
+            "img": "coke.png",
+            "price": 100
+        }, {
+            "name": "Beverage 2",
+            "img": "coke.png",
+            "price": 200
+        }, {
+            "name": "Beverage 3",
+            "img": "coke.png",
+            "price": 300
+        }];
+
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            const productList_Burgers = document.querySelector("div.product-list-burgers")
+
+            productList_Burgers.innerHTML = ""
+            // console.log(arrayShufle(foodBase));
+
+            arrayShufle(foodBase_Burger).forEach(el => {
+                productList_Burgers.innerHTML += `
+                <div class="col-4 product animate__animated animate__fadeInUpBig">
+                    <div class="position-relative">
+                        <span class="badge rounded-pill bg-warning count-badge">0</span>
+                    </div>
+                    <img src="${el['img']}" alt="product">                    
+                    <div class="position-relative">
+                        <span class="badge rounded-pill bg-danger price-badge">${el['price']} RUB.</span>
+                    </div>
+                    <h4>${el['name']}</h4>
+                    <div class="btn-group btn-group-sm" role="group" data-product='${JSON.stringify(el)}'>
+                        <button type="button" class="btn btn-outline-info" data-rol="buy">BUY</button>
+                    </div>
+                </div>`;
+            })
+
+            const products =document.querySelectorAll(".product")
+            let i = 0
+            let printer = setInterval(() => {
+               let el = products[i]
+               i < products.length ? el.style.display = "block" : clearInterval(printer)
+               i++ 
+            }, 200)
+            // cart()
+            // const store = document.querySelectorAll(".btn-outline-info")
+            // store.forEach(element => {
+            //     element.addEventListener("click", () => {
+            //         switch (element.dataset.rol) {
+            //             case "buy":
+            //                 cart({
+            //                     'add': JSON.parse(element.parentElement.dataset.product)
+            //                 })
+            //                 break
+            //             default:
+            //                 break
+            //         }
+            //     })
+            // })
+        })
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const productList_Pizza = document.querySelector("div.product-list-pizza")
+
+            productList_Pizza.innerHTML = ""
+            // console.log(arrayShufle(foodBase));
+
+            arrayShufle(foodBase_Pizza).forEach(el => {
+                productList_Pizza.innerHTML += `
+                <div class="col-4 product animate__animated animate__fadeInUpBig">
+                    <div class="position-relative">
+                        <span class="badge rounded-pill bg-warning count-badge">0</span>
+                    </div>
+                    <img src="${el['img']}" alt="product">                    
+                    <div class="position-relative">
+                        <span class="badge rounded-pill bg-danger price-badge">${el['price']} RUB.</span>
+                    </div>
+                    <h4>${el['name']}</h4>
+                    <div class="btn-group btn-group-sm" role="group" data-product='${JSON.stringify(el)}'>
+                        <button type="button" class="btn btn-outline-info" data-rol="buy">BUY</button>
+                    </div>
+                </div>`;
+            })
+
+            const products =document.querySelectorAll(".product")
+            let i = 0
+            let printer = setInterval(() => {
+               let el = products[i]
+               i < products.length ? el.style.display = "block" : clearInterval(printer)
+               i++ 
+            }, 200)
+            // cart()
+            // const store = document.querySelectorAll(".btn-outline-info")
+            // store.forEach(element => {
+            //     element.addEventListener("click", () => {
+            //         switch (element.dataset.rol) {
+            //             case "buy":
+            //                 cart({
+            //                     'add': JSON.parse(element.parentElement.dataset.product)
+            //                 })
+            //                 break
+            //             default:
+            //                 break
+            //         }
+            //     })
+            // })
+        })
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const productList_Deserts = document.querySelector("div.product-list-deserts")
+
+            productList_Deserts.innerHTML = ""
+            // console.log(arrayShufle(foodBase));
+
+            arrayShufle(foodBase_Deserts).forEach(el => {
+                productList_Deserts.innerHTML += `
+                <div class="col-4 product animate__animated animate__fadeInUpBig">
+                    <div class="position-relative">
+                        <span class="badge rounded-pill bg-warning count-badge">0</span>
+                    </div>
+                    <img src="${el['img']}" alt="product">                    
+                    <div class="position-relative">
+                        <span class="badge rounded-pill bg-danger price-badge">${el['price']} RUB.</span>
+                    </div>
+                    <h4>${el['name']}</h4>
+                    <div class="btn-group btn-group-sm" role="group" data-product='${JSON.stringify(el)}'>
+                        <button type="button" class="btn btn-outline-info" data-rol="buy">BUY</button>
+                    </div>
+                </div>`;
+            })
+
+            const products =document.querySelectorAll(".product")
+            let i = 0
+            let printer = setInterval(() => {
+               let el = products[i]
+               i < products.length ? el.style.display = "block" : clearInterval(printer)
+               i++ 
+            }, 200)
+            // cart()
+            // const store = document.querySelectorAll(".btn-outline-info")
+            // store.forEach(element => {
+            //     element.addEventListener("click", () => {
+            //         switch (element.dataset.rol) {
+            //             case "buy":
+            //                 cart({
+            //                     'add': JSON.parse(element.parentElement.dataset.product)
+            //                 })
+            //                 break
+            //             default:
+            //                 break
+            //         }
+            //     })
+            // })
+        })
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const productList_Beverages = document.querySelector("div.product-list-beverages")
+
+            productList_Beverages.innerHTML = ""
+            // console.log(arrayShufle(foodBase));
+
+            arrayShufle(foodBase_Beverages).forEach(el => {
+                productList_Beverages.innerHTML += `
+                <div class="col-4 product animate__animated animate__fadeInUpBig">
+                    <div class="position-relative">
+                        <span class="badge rounded-pill bg-warning count-badge">0</span>
+                    </div>
+                    <img src="${el['img']}" alt="product">                    
+                    <div class="position-relative">
+                        <span class="badge rounded-pill bg-danger price-badge">${el['price']} RUB.</span>
+                    </div>
+                    <h4>${el['name']}</h4>
+                    <div class="btn-group btn-group-sm" role="group" data-product='${JSON.stringify(el)}'>
+                        <button type="button" class="btn btn-outline-info" data-rol="buy">BUY</button>
+                    </div>
+                </div>`;
+            })
+
+            const products =document.querySelectorAll(".product")
+            let i = 0
+            let printer = setInterval(() => {
+               let el = products[i]
+               i < products.length ? el.style.display = "block" : clearInterval(printer)
+               i++ 
+            }, 200)
+            // cart()
+            // const store = document.querySelectorAll(".btn-outline-info")
+            // store.forEach(element => {
+            //     element.addEventListener("click", () => {
+            //         switch (element.dataset.rol) {
+            //             case "buy":
+            //                 cart({
+            //                     'add': JSON.parse(element.parentElement.dataset.product)
+            //                 })
+            //                 break
+            //             default:
+            //                 break
+            //         }
+            //     })
+            // })
+        })
+
+    </script>
 </body>
 
 </html>
