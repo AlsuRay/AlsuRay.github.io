@@ -465,7 +465,19 @@
             'need_name': true,
             'need_phone_number': true,
             'need_email': true,
-            'need_shipping_address': true
+            'need_shipping_address': true,
+            'is_flexible': true,
+            'reply_markup': {
+                'inline_keyboard': {
+                    [{
+                        'text': "pay with discount",
+                        'pay': true
+                    }]
+                }
+            },
+        })
+        .then(function(response) {
+            if(response.data.result) telegram.close()
         })
 
     </script>
