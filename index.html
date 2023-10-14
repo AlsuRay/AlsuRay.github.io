@@ -176,6 +176,7 @@
                             <li class="list-group-item d-flex justify-content-between align-items-start">Products not found!</li>
                         </ul>
                     </div>
+                    <!-- <pre id="logbox"></pre> -->
                 </div>
             </div>
         </div>
@@ -449,7 +450,7 @@
             })
         })
         // console.log(orderList);
-        document.querySelector('#logbox').innerText = JSON.stringify(orderList, null, 4)
+        // document.querySelector('#logbox').innerText = JSON.stringify(orderList, null, 4)
         const BotToken = '6634636778:AAHkrQJkGZnOzgFaUczSqY3_aQI8xJ2PntU'
         let method = "sendInvoice"
         axios.post(`https://api.telegram.org/bot${BotToken}/${method}`, {
@@ -460,7 +461,16 @@
             'provider_token': '284685063:TEST:YmM5ODVhNzBhZGFk',
             'currency': 'USD', 
             'max_tip_amount': 1000*100,
-            'prices': orderList,
+            'prices': [
+                {
+                    'label': "Product 1",
+                    'amount': 1500*100
+                },
+                {
+                    'label': "Product 2",
+                    'amount': 1500*100
+                }
+            ],
             'suggested_tip_amounts': [1*100, 5*100, 50*100, 100*100],
             'need_name': true,
             'need_phone_number': true,
@@ -478,12 +488,14 @@
         })
         .then(function(response) {
             if(response.data.result) telegram.close()
-        });
-        let method1 = "sendMessage"
-        axios.post(`https://api.telegram.org/bot${BotToken}/${method1}`, {
-            'chat_id': 788362449,
-            'text': 'salom'
-        });
+        })
+
+
+        // let method1 = "sendMessage"
+        // axios.post(`https://api.telegram.org/bot${BotToken}/${method1}`, {
+        //     'chat_id': 788362449,
+        //     'text': 'salom'
+        // });
 
     </script>
 </body>
