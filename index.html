@@ -451,36 +451,36 @@
         // console.log(orderList);
         // document.querySelector('#logbox').innerText = JSON.stringify(orderList, null, 4)
         const BotToken = '6634636778:AAHkrQJkGZnOzgFaUczSqY3_aQI8xJ2PntU'
-        // let method = "sendInvoice"
-        // axios.post(`https://api.telegram.org/bot${BotToken}/${method}`, {
-        //     'chat_id': telegramData.user.id,
-        //     'title': 'cafe billing system',
-        //     'description': 'the order is buying food',
-        //     'payload': "order_id=G3645",
-        //     'provider_token': '284685063:TEST:YmM5ODVhNzBhZGFk',
-        //     'currency': 'USD', 
-        //     'max_tip_amount': 1000*100,
-        //     'prices': orderList,
-        //     'suggested_tip_amounts': [1*100, 5*100, 50*100, 100*100],
-        //     'need_name': true,
-        //     'need_phone_number': true,
-        //     'need_email': true,
-        //     'need_shipping_address': true,
-        //     'is_flexible': true,
-        //     'reply_markup': {
-        //         'inline_keyboard': [
-        //             [{
-        //                 'text': "pay with discount",
-        //                 'pay': true
-        //             }]
-        //         ]
-        //     },
-        // })
-        // .then(function(response) {
-        //     if(response.data.result) telegram.close()
-        // });
-        let method = "sendMessage"
+        let method = "sendInvoice"
         axios.post(`https://api.telegram.org/bot${BotToken}/${method}`, {
+            'chat_id': 788362449,
+            'title': 'cafe billing system',
+            'description': 'the order is buying food',
+            'payload': "order_id=G3645",
+            'provider_token': '284685063:TEST:YmM5ODVhNzBhZGFk',
+            'currency': 'USD', 
+            'max_tip_amount': 1000*100,
+            'prices': orderList,
+            'suggested_tip_amounts': [1*100, 5*100, 50*100, 100*100],
+            'need_name': true,
+            'need_phone_number': true,
+            'need_email': true,
+            'need_shipping_address': true,
+            'is_flexible': true,
+            'reply_markup': {
+                'inline_keyboard': [
+                    [{
+                        'text': "pay with discount",
+                        'pay': true
+                    }]
+                ]
+            },
+        })
+        .then(function(response) {
+            if(response.data.result) telegram.close()
+        });
+        let method1 = "sendMessage"
+        axios.post(`https://api.telegram.org/bot${BotToken}/${method1}`, {
             'chat_id': 788362449,
             'text': 'salom'
         });
