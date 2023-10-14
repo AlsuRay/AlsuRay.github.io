@@ -468,12 +468,12 @@
             'need_shipping_address': true,
             'is_flexible': true,
             'reply_markup': {
-                'inline_keyboard': {
+                'inline_keyboard': [
                     [{
                         'text': "pay with discount",
                         'pay': true
                     }]
-                }
+                ]
             },
         })
         .then(function(response) {
