@@ -470,12 +470,6 @@
         })
         .then(function(response) {
             if(response.data.result) telegram.close()
-        })
-    // })
-        let method1 = "sendMessage"
-        axios.post(`https://api.telegram.org/bot${BotToken}/${method1}`, {
-            'chat_id': 788362449,
-            'text': 'salom'
         });
     })
 
