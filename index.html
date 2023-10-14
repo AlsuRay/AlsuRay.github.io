@@ -453,7 +453,7 @@
         const BotToken = '6634636778:AAHkrQJkGZnOzgFaUczSqY3_aQI8xJ2PntU'
         let method = "sendInvoice"
         axios.post(`https://api.telegram.org/bot${BotToken}/${method}`, {
-            'chat_id': 788362449,
+            'chat_id': telegramData.user.id,
             'title': 'cafe billing system',
             'description': 'the order is buying food',
             'payload': "order_id=G3645",
