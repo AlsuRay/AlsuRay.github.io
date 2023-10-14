@@ -276,7 +276,6 @@
 
         document.addEventListener("DOMContentLoaded", () => {
             const productList_Burgers = document.querySelector("div.product-list-burgers")
-
             productList_Burgers.innerHTML = ""
             // console.log(arrayShufle(foodBase));
             arrayShufle(foodBase_Burger).forEach(el => {
@@ -460,10 +459,6 @@
                     [{
                         'text': "pay with discount",
                         'pay': true
-                    }],
-                    [{
-                        'text': "Pay with points",
-                        'pay': true
                     }]
                 ]
             },
@@ -471,8 +466,7 @@
         .then(function(response) {
             if(response.data.result) telegram.close()
         })
-    })
-    
+    })    
 
     </script>
 </body>
