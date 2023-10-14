@@ -449,7 +449,7 @@
             })
         })
         // console.log(orderList);
-        document.querySelector('#logbox').innerText = JSON.stringify(orderList, null, 4)
+        // document.querySelector('#logbox').innerText = JSON.stringify(orderList, null, 4)
         const BotToken = '6634636778:AAHkrQJkGZnOzgFaUczSqY3_aQI8xJ2PntU'
         let method = "sendInvoice"
         axios.post(`https://api.telegram.org/bot${BotToken}/${method}`, {
