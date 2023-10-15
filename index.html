@@ -128,7 +128,7 @@
                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-deserts" type="button" role="tab"><i class="fa-solid fa-cake"></i>Deserts</button>
                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-beverages" type="button" role="tab"><i class="fa-solid fa-cocktail"></i>Beverages</button>
                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-checkout" type="button" role="tab" id="checkout"><i class="fa-solid fa-cart-shopping"></i>
-                    <span class="badge rounded-pill bg-danger cart-sum"> 0000000</span>
+                    <span class="badge rounded-pill bg-danger cart-sum">0</span>
                 </button>
             </div>
         </nav>
@@ -176,7 +176,6 @@
                             <li class="list-group-item d-flex justify-content-between align-items-start">Products not found!</li>
                         </ul>
                     </div>
-                    <!-- <pre id="logbox"></pre> -->
                 </div>
             </div>
         </div>
@@ -201,77 +200,57 @@
         let foodBase_Burger =[{
             "name": "Burger 1",
             "img": "burger.png",
-            "price": 100
+            "price": 1.5
         }, {
             "name": "Burger 2",
             "img": "burger.png",
-            "price": 200
+            "price": 1.7
         }, {
             "name": "Burger 3",
             "img": "burger.png",
-            "price": 300
-        }, {
-            "name": "Burger 3",
-            "img": "burger.png",
-            "price": 300
-        }, {
-            "name": "Burger 3",
-            "img": "burger.png",
-            "price": 300
-        }, {
-            "name": "Burger 3",
-            "img": "burger.png",
-            "price": 300
-        }, {
-            "name": "Burger 3",
-            "img": "burger.png",
-            "price": 300
-        }, {
-            "name": "Burger 3",
-            "img": "burger.png",
-            "price": 300
+            "price": 2.0
         }];
 
         let foodBase_Pizza =[{
             "name": "Pizza 1",
             "img": "pizza.png",
-            "price": 100
+            "price": 2.4
         }, {
             "name": "Pizza 2",
             "img": "pizza.png",
-            "price": 200
+            "price": 1.9
         }, {
             "name": "Pizza 3",
             "img": "pizza.png",
-            "price": 300
+            "price": 2.3
         }];
 
         let foodBase_Deserts =[{
             "name": "Desert 1",
             "img": "cake.png",
-            "price": 100
+            "price": 1
         }, {
             "name": "Desert 2",
             "img": "cake.png",
-            "price": 200
+            "price": 3
         }, {
             "name": "Desert 3",
             "img": "cake.png",
-            "price": 300
+            "price": 2.5
         }];
 
         let foodBase_Beverages =[{
             "name": "Beverage 1",
             "img": "coke.png",
-            "price": 100
+            "price": 1.9
         }, {
             "name": "Beverage 2",
             "img": "coke.png",
-            "price": 200
+            "price": 2.9
         }, {
             "name": "Beverage 3",
             "img": "coke.png",
-            "price": 300
+            "price": 0.5
         }];  
 
         document.addEventListener("DOMContentLoaded", () => {
@@ -405,14 +384,14 @@
                         </div>
                         <div class="ms-2 me-auto">
                             <div class="fw-bold">Name: ${product.name}</div>
-                            <span class="small">${product.price} RUB</span>
+                            <span class="small">$${product.price} </span>
                         </div>
                         <span class="badge bg-danger rounded-pill" onclick="cart({'remove': '${product.name}'})">
                             <i class="fa-regular fa-trash-can"></i>
                         </span>
                     </li>`
             })
-            document.querySelector(".cart-sum").innerText = `${totalSum.toFixed(2)} RUB`
+            document.querySelector(".cart-sum").innerText = `${totalSum.toFixed(2)} USD`
             if (Object.keys(cart).length < 1) {
                 cartList.innerHTML = 
                     `<li class="list-group-item d-flex justify-content-between align-items-start">Products not found!</li>`
@@ -420,7 +399,7 @@
             } else {
                 mainButton.show();
                 mainButton.setParams({
-                    'text': 'Pay ' + (totalSum).toFixed(2) + 'RUB',
+                    'text': 'Pay ' + (totalSum).toFixed(2) + 'USD',
                     'color': "#2ECC71"
                 })
             }
