@@ -101,13 +101,13 @@
         width: 80px;
     }
 
-/*     button[class="nav-link"] {
+    button[class="nav-link"] {
         color: var(--tg-theme-button-text-color);
     }
 
     button[class="nav-link"]:hover {
         color: var(--tg-theme-button-text-color);
-    } */
+    }
 
     button[class="btn btn-outline-info"]:hover {
         border-color: 2px solid #ffffff;
@@ -399,7 +399,7 @@
             } else {
                 mainButton.show();
                 mainButton.setParams({
-                    'text': 'Pay ' + (totalSum).toFixed(2) + 'USD',
+                    'text': 'Pay ' + (totalSum).toFixed(2) + ' USD',
                     'color': "#2ECC71"
                 })
             }
@@ -444,7 +444,7 @@
         })
         .then(function(response) {
             if(response.data.result) telegram.close()
-        })
+        });
     })    
 
     </script>
