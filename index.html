@@ -98,7 +98,7 @@
     button[class="btn btn-outline-info"] {
         color: var(--tg-theme-button-text-color);
         background: var(--tg-theme-button-color);
-        width: 80px;
+        width: 100px;
     }
 
     button[class="nav-link"] {
@@ -198,59 +198,59 @@
             return array.sort((a,b) => 0.5 - Math.random())
         }
         let foodBase_Burger =[{
-            "name": "Burger 1",
+            "name": "Бургер 1",
             "img": "burger.png",
-            "price": 1.5
+            "price": 100
         }, {
-            "name": "Burger 2",
+            "name": "Бургер 2",
             "img": "burger.png",
-            "price": 1.7
+            "price": 150
         }, {
-            "name": "Burger 3",
+            "name": "Бургер 3",
             "img": "burger.png",
-            "price": 2.0
+            "price": 99
         }];
 
         let foodBase_Pizza =[{
-            "name": "Pizza 1",
+            "name": "Пицца 1",
             "img": "pizza.png",
-            "price": 2.4
+            "price": 239
         }, {
-            "name": "Pizza 2",
+            "name": "Пицца 2",
             "img": "pizza.png",
-            "price": 1.9
+            "price": 159
         }, {
-            "name": "Pizza 3",
+            "name": "Пицца 3",
             "img": "pizza.png",
-            "price": 2.3
+            "price": 299
         }];
 
         let foodBase_Deserts =[{
-            "name": "Desert 1",
+            "name": "Десерт 1",
             "img": "cake.png",
-            "price": 1
+            "price": 499
         }, {
-            "name": "Desert 2",
+            "name": "Десерт 2",
             "img": "cake.png",
-            "price": 3
+            "price": 359
         }, {
-            "name": "Desert 3",
+            "name": "Десерт 3",
             "img": "cake.png",
-            "price": 2.5
+            "price": 450
         }];
 
         let foodBase_Beverages =[{
-            "name": "Beverage 1",
+            "name": "Напиток 1",
             "img": "coke.png",
-            "price": 1.9
+            "price": 150
         }, {
-            "name": "Beverage 2",
+            "name": "Напиток 2",
             "img": "coke.png",
-            "price": 2.9
+            "price": 100
         }, {
-            "name": "Beverage 3",
+            "name": "Напиток 3",
             "img": "coke.png",
-            "price": 0.5
+            "price": 99
         }];  
 
         document.addEventListener("DOMContentLoaded", () => {
@@ -262,7 +262,7 @@
                 <div class="col-4 product animate__animated animate__fadeInUpBig">
                     <img src="${el['img']}" alt="product">                    
                     <div class="position-relative">
-                        <span class="badge rounded-pill bg-danger price-badge">${el['price']} RUB</span>
+                        <span class="badge rounded-pill bg-danger price-badge">${el['price']} руб</span>
                     </div>
                     <h1>${el['name']}</h1>
                     <div class="btn-group btn-group-sm" role="group" data-product='${JSON.stringify(el)}'>
@@ -281,11 +281,11 @@
                 <div class="col-4 product animate__animated animate__fadeInUpBig">
                     <img src="${el['img']}" alt="product">                    
                     <div class="position-relative">
-                        <span class="badge rounded-pill bg-danger price-badge">${el['price']} USD</span>
+                        <span class="badge rounded-pill bg-danger price-badge">${el['price']} руб</span>
                     </div>
                     <h1>${el['name']}</h1>
                     <div class="btn-group btn-group-sm" role="group" data-product='${JSON.stringify(el)}'>
-                        <button type="button" class="btn btn-outline-info" data-rol="buy">BUY</button>
+                        <button type="button" class="btn btn-outline-info" data-rol="buy">Добавить</button>
                     </div>
                 </div>`;
             })
@@ -300,11 +300,11 @@
                 <div class="col-4 product animate__animated animate__fadeInUpBig">
                     <img src="${el['img']}" alt="product">                    
                     <div class="position-relative">
-                        <span class="badge rounded-pill bg-danger price-badge">${el['price']} USD</span>
+                        <span class="badge rounded-pill bg-danger price-badge">${el['price']} руб</span>
                     </div>
                     <h1>${el['name']}</h1>
                     <div class="btn-group btn-group-sm" role="group" data-product='${JSON.stringify(el)}'>
-                        <button type="button" class="btn btn-outline-info" data-rol="buy">BUY</button>
+                        <button type="button" class="btn btn-outline-info" data-rol="buy">Добавить</button>
                     </div>
                 </div>`;
             })
@@ -319,11 +319,11 @@
                 <div class="col-4 product animate__animated animate__fadeInUpBig">
                     <img src="${el['img']}" alt="product">                    
                     <div class="position-relative">
-                        <span class="badge rounded-pill bg-danger price-badge">${el['price']} USD</span>
+                        <span class="badge rounded-pill bg-danger price-badge">${el['price']} руб</span>
                     </div>
                     <h1>${el['name']}</h1>
                     <div class="btn-group btn-group-sm" role="group" data-product='${JSON.stringify(el)}'>
-                        <button type="button" class="btn btn-outline-info" data-rol="buy">BUY</button>
+                        <button type="button" class="btn btn-outline-info" data-rol="buy">Добавить</button>
                     </div>
                 </div>`;
             })
@@ -391,15 +391,15 @@
                         </span>
                     </li>`
             })
-            document.querySelector(".cart-sum").innerText = `${totalSum.toFixed(2)} USD`
+            document.querySelector(".cart-sum").innerText = `${totalSum.toFixed(2)} руб`
             if (Object.keys(cart).length < 1) {
                 cartList.innerHTML = 
-                    `<li class="list-group-item d-flex justify-content-between align-items-start">Products not found!</li>`
+                    `<li class="list-group-item d-flex justify-content-between align-items-start">Корзина пустая!</li>`
                 mainButton.hide();
             } else {
                 mainButton.show();
                 mainButton.setParams({
-                    'text': 'Pay ' + (totalSum).toFixed(2) + ' USD',
+                    'text': 'Оплатить ' + (totalSum).toFixed(2) + ' руб',
                     'color': "#2ECC71"
                 })
             }
@@ -420,11 +420,11 @@
         let method = "sendInvoice"
         axios.post(`https://api.telegram.org/bot${BotToken}/${method}`, {
             'chat_id': telegramData.user.id,
-            'title': 'Order payment',
-            'description': "Please don't forget to tip ✨",
+            'title': 'Оплата заказа',
+            'description': "Не забудь оставить чаевые ✨",
             'payload': "order_id=G3645",
             'provider_token': '284685063:TEST:YmM5ODVhNzBhZGFk',
-            'currency': 'USD', 
+            'currency': 'RUB', 
             'max_tip_amount': 1000*100,
             'prices': orderList,
             'suggested_tip_amounts': [1*100, 5*100, 50*100, 100*100],
@@ -436,7 +436,7 @@
             'reply_markup': {
                 'inline_keyboard': [
                     [{
-                        'text': "pay",
+                        'text': "Оплатить заказ",
                         'pay': true
                     }]
                 ]
